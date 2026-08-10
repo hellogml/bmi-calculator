@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | BMI Calculator</title>
+  <meta name="description" content="Contact the BMI Calculator team. Send us your questions, feedback, bug reports, or feature requests.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.bmi-calculator.example/contact.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a href="/" class="logo">BMI Calculator</a>
+      <nav><ul class="nav-links">
+        <li><a href="/">Calculator</a></li>
+        <li><a href="about-us.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main class="page-content">
+    <h1>Contact Us</h1>
+    <p>We would love to hear from you. Whether you have a question about how the BMI Calculator works, found a bug, have a feature suggestion, or need help with something on our site, please reach out using the form below or the email address provided.</p>
+    <h2>Email</h2>
+    <p>You can email us directly at: <a href="mailto:support@bmi-calculator.example">support@bmi-calculator.example</a></p>
+    <p>We aim to respond to all inquiries within 1&ndash;2 business days.</p>
+    <h2>Send a Message</h2>
+    <form id="contact-form" class="contact-form">
+      <div class="field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required>
+      </div>
+      <div class="field">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message</button>
+      <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <h2>Privacy Note</h2>
+    <p>Any information you share through this contact form is used solely to respond to your inquiry. We do not add you to mailing lists or share your details with third parties. For more information, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+  </main>
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="footer-links">
+        <a href="/">BMI Calculator</a><a href="about-us.html">About Us</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a><a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="copyright">&copy; 2026 BMI Calculator. All rights reserved.</div>
+    </div>
+  </footer>
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+    <p>We use cookies to improve your experience and to display relevant ads. By clicking &ldquo;Accept&rdquo;, you agree to our use of cookies. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    <div class="cookie-btns">
+      <button class="btn-cookie btn-decline" id="cookie-decline" type="button">Decline</button>
+      <button class="btn-cookie btn-accept" id="cookie-accept" type="button">Accept</button>
+    </div>
+  </div>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

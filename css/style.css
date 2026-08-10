@@ -1,0 +1,174 @@
+/* ===== BMI Calculator Site Styles ===== */
+/* Unified minimalist style — health-focused green accent */
+
+:root {
+  --primary: #059669;
+  --primary-dark: #047857;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --underweight: #0ea5e9;
+  --normal: #16a34a;
+  --overweight: #d97706;
+  --obese: #dc2626;
+  --radius: 12px;
+  --max-width: 820px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text); background: var(--bg); line-height: 1.65; font-size: 16px;
+}
+
+/* Header */
+.site-header { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+.site-header .inner { max-width: var(--max-width); margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+.site-header .logo { font-size: 19px; font-weight: 700; color: var(--primary); text-decoration: none; letter-spacing: -.3px; }
+.site-header .nav-links { display: flex; gap: 18px; list-style: none; }
+.site-header .nav-links a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .15s; }
+.site-header .nav-links a:hover { color: var(--primary); }
+
+/* Layout */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 28px 20px 60px; }
+h1 { font-size: 28px; font-weight: 800; line-height: 1.3; margin-bottom: 12px; letter-spacing: -.5px; }
+.intro { color: var(--text-light); font-size: 16px; margin-bottom: 24px; }
+
+/* Ad zones */
+.ad-zone { margin: 24px auto; text-align: center; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+.ad-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+.ad-placeholder { width: 100%; max-width: 728px; min-height: 90px; border: 1px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #cbd5e1; font-size: 12px; }
+
+/* Tool card */
+.tool-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+.tool-card .field { margin-bottom: 20px; }
+.tool-card label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: var(--text); }
+.tool-card input[type="number"] { width: 100%; padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 16px; color: var(--text); background: var(--card); transition: border-color .15s; }
+.tool-card input:focus { outline: none; border-color: var(--primary); }
+.tool-card .btn { width: 100%; padding: 14px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background .15s; }
+.tool-card .btn:hover { background: var(--primary-dark); }
+.tool-card .btn:active { transform: scale(.99); }
+
+/* Unit toggle */
+.unit-toggle { display: flex; gap: 0; margin-bottom: 24px; border: 2px solid var(--border); border-radius: 8px; overflow: hidden; }
+.unit-toggle button { flex: 1; padding: 12px; border: none; background: var(--card); color: var(--text-light); font-size: 15px; font-weight: 600; cursor: pointer; transition: all .15s; }
+.unit-toggle button.active { background: var(--primary); color: #fff; }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.input-suffix { position: relative; }
+.input-suffix input { padding-right: 48px; }
+.input-suffix .suffix { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--text-light); font-size: 14px; font-weight: 500; pointer-events: none; }
+
+/* Results */
+.results { margin-top: 28px; display: none; }
+.results.show { display: block; animation: fadeUp .3s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.result-hero { border-radius: var(--radius); padding: 28px; text-align: center; margin-bottom: 16px; }
+.result-hero.underweight { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 1px solid #bae6fd; }
+.result-hero.normal { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #bbf7d0; }
+.result-hero.overweight { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #fde68a; }
+.result-hero.obese { background: linear-gradient(135deg, #fef2f2, #fee2e2); border: 1px solid #fecaca; }
+.result-hero .bmi-big { font-size: 48px; font-weight: 800; line-height: 1.1; }
+.result-hero.underweight .bmi-big { color: var(--underweight); }
+.result-hero.normal .bmi-big { color: var(--normal); }
+.result-hero.overweight .bmi-big { color: var(--overweight); }
+.result-hero.obese .bmi-big { color: var(--obese); }
+.result-hero .bmi-category { font-size: 18px; font-weight: 600; margin-top: 6px; }
+.result-hero.underweight .bmi-category { color: var(--underweight); }
+.result-hero.normal .bmi-category { color: var(--normal); }
+.result-hero.overweight .bmi-category { color: var(--overweight); }
+.result-hero.obese .bmi-category { color: var(--obese); }
+.result-hero .bmi-range { font-size: 14px; color: var(--text-light); margin-top: 8px; }
+
+.result-advice { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin-top: 12px; font-size: 15px; }
+.result-advice .advice-title { font-weight: 600; margin-bottom: 6px; }
+
+/* Scale bar */
+.bmi-scale { margin-top: 20px; }
+.bmi-scale h3 { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+.scale-bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; }
+.scale-seg { flex: 1; }
+.scale-seg.underweight { background: var(--underweight); }
+.scale-seg.normal { background: var(--normal); flex: 1.5; }
+.scale-seg.overweight { background: var(--overweight); }
+.scale-seg.obese { background: var(--obese); }
+.scale-marker { width: 4px; height: 20px; background: var(--text); margin-top: -4px; border-radius: 2px; transform: translateX(-50%); }
+.scale-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: var(--text-light); }
+
+.error-msg { color: var(--obese); font-size: 14px; margin-top: 12px; display: none; }
+.error-msg.show { display: block; }
+
+/* Content sections */
+.section { margin-top: 40px; }
+.section h2 { font-size: 22px; font-weight: 700; margin-bottom: 14px; letter-spacing: -.3px; }
+.section h3 { font-size: 17px; font-weight: 600; margin: 18px 0 8px; }
+.section p { margin-bottom: 12px; color: var(--text); }
+.section ol, .section ul { margin: 0 0 14px 20px; }
+.section li { margin-bottom: 8px; }
+
+/* BMI reference table */
+.ref-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+.ref-table th, .ref-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+.ref-table th { font-weight: 600; color: var(--text-light); font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+.ref-table td.cat { font-weight: 600; }
+.ref-table td.cat.underweight { color: var(--underweight); }
+.ref-table td.cat.normal { color: var(--normal); }
+.ref-table td.cat.overweight { color: var(--overweight); }
+.ref-table td.cat.obese { color: var(--obese); }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid var(--border); padding: 14px 0; }
+.faq-item summary { font-weight: 600; font-size: 16px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 20px; color: var(--primary); font-weight: 400; }
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { margin-top: 10px; color: var(--text-light); font-size: 15px; }
+
+/* Footer */
+.site-footer { background: var(--card); border-top: 1px solid var(--border); padding: 32px 20px; }
+.site-footer .inner { max-width: var(--max-width); margin: 0 auto; }
+.site-footer .footer-links { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
+.site-footer .footer-links a { color: var(--text-light); text-decoration: none; font-size: 14px; }
+.site-footer .footer-links a:hover { color: var(--primary); }
+.site-footer .copyright { font-size: 13px; color: #94a3b8; }
+
+/* Cookie banner */
+.cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: var(--text); color: #fff; padding: 16px 20px; z-index: 9999; display: none; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.cookie-banner.show { display: flex; }
+.cookie-banner p { font-size: 14px; max-width: 600px; }
+.cookie-banner p a { color: #6ee7b7; }
+.cookie-banner .cookie-btns { display: flex; gap: 10px; }
+.cookie-banner .btn-cookie { padding: 8px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; }
+.cookie-banner .btn-accept { background: var(--primary); color: #fff; }
+.cookie-banner .btn-decline { background: transparent; color: #fff; border: 1px solid #64748b; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-header .nav-links { gap: 12px; }
+  .site-header .nav-links a { font-size: 13px; }
+  h1 { font-size: 23px; }
+  .tool-card { padding: 20px; }
+  .input-row { grid-template-columns: 1fr; }
+  .result-hero .bmi-big { font-size: 38px; }
+  .section h2 { font-size: 19px; }
+  .cookie-banner { flex-direction: column; text-align: center; }
+}
+
+/* Generic compliance pages */
+.page-content { max-width: var(--max-width); margin: 0 auto; padding: 28px 20px 60px; }
+.page-content h1 { font-size: 26px; margin-bottom: 20px; }
+.page-content h2 { font-size: 19px; margin: 24px 0 10px; }
+.page-content p { margin-bottom: 12px; color: var(--text); }
+.page-content ul { margin: 0 0 14px 20px; }
+.page-content li { margin-bottom: 6px; }
+.page-content a { color: var(--primary); }
+.contact-form { margin-top: 16px; }
+.contact-form .field { margin-bottom: 16px; }
+.contact-form label { display:block; font-weight:600; font-size:14px; margin-bottom:6px; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 15px; font-family: inherit; }
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); }
+.contact-form .btn { padding: 12px 28px; background: var(--primary); color:#fff; border:none; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; }
