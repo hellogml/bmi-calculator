@@ -28,8 +28,7 @@ body {
 /* Header */
 .site-header { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
 .site-header .inner { max-width: var(--max-width); margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
-.site-header .logo { font-size: 19px; font-weight: 700; color: var(--primary); text-decoration: none; letter-spacing: -.3px; display: flex; align-items: center; gap: 8px; }
-.site-header .logo-img { width: 32px; height: 32px; border-radius: 6px; object-fit: cover; }
+.site-header .logo { font-size: 19px; font-weight: 700; color: var(--primary); text-decoration: none; letter-spacing: -.3px; }
 .site-header .nav-links { display: flex; gap: 18px; list-style: none; }
 .site-header .nav-links a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .15s; }
 .site-header .nav-links a:hover { color: var(--primary); }
