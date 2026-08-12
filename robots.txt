@@ -1,6 +1,1 @@
-User-agent: *
-Allow: /
-Disallow: /css/
-Disallow: /js/
-
-Sitemap: https://www.bmi-calculator.example/sitemap.xml
+﻿Sitemap: https://getbmicalc.com/sitemap.xml
