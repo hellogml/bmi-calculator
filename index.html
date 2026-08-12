@@ -1,1 +1,299 @@
-﻿</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== TDK (per SEO template) ===== -->
+  <title>Free BMI Calculator Online | Fast Body Mass Index Checker</title>
+  <meta name="description" content="Use our free online BMI Calculator to check your Body Mass Index instantly. Supports metric and imperial units with WHO health categories. No registration, no download.">
+  <link rel="canonical" href="https://www.getbmicalc.com/">
+
+  <meta property="og:title" content="Free BMI Calculator Online | Fast Body Mass Index Checker">
+  <meta property="og:description" content="Calculate your Body Mass Index instantly with metric or imperial units. Free, accurate, and no signup required.">
+  <meta property="og:type" content="website">
+
+  <!-- FAQ structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What is a BMI Calculator?","acceptedAnswer":{"@type":"Answer","text":"A BMI Calculator is a free online tool that calculates your Body Mass Index — a standard measure that uses your height and weight to estimate whether your weight is in a healthy range. It works with both metric (cm, kg) and imperial (inches, pounds) units."}},
+      {"@type":"Question","name":"How do I use the BMI Calculator?","acceptedAnswer":{"@type":"Answer","text":"Select your preferred unit system (metric or imperial), enter your height and weight, then click Calculate. The tool instantly shows your BMI value, your WHO weight category, and a healthy weight range for your height."}},
+      {"@type":"Question","name":"What is a healthy BMI range?","acceptedAnswer":{"@type":"Answer","text":"According to the World Health Organization, a BMI between 18.5 and 24.9 is considered normal and healthy. Below 18.5 is underweight, 25.0 to 29.9 is overweight, and 30.0 or above is classified as obese."}},
+      {"@type":"Question","name":"Is this BMI Calculator 100% free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our online BMI Calculator is completely free for unlimited use. There are no hidden fees, no premium limits and no subscription required."}},
+      {"@type":"Question","name":"Does this tool store my data?","acceptedAnswer":{"@type":"Answer","text":"No. All calculations are completed locally on your device. We do not upload, store or share any of your personal input data, ensuring full privacy protection."}},
+      {"@type":"Question","name":"Are the results from this BMI Calculator accurate?","acceptedAnswer":{"@type":"Answer","text":"All results are calculated using the standard WHO BMI formula. The tool is regularly optimized to ensure high accuracy for daily and personal health reference."}},
+      {"@type":"Question","name":"Can I use this BMI Calculator on mobile?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. The tool is fully responsive and adapts to all mobile, tablet and desktop devices, supporting real-time use anytime and anywhere."}},
+      {"@type":"Question","name":"Does BMI apply to everyone?","acceptedAnswer":{"@type":"Answer","text":"BMI is a general screening tool for adults and may not be accurate for athletes with high muscle mass, pregnant women, or the elderly. It does not measure body fat directly. For a complete health assessment, consult a healthcare professional."}}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BMI Calculator",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <a href="/" class="logo"><img src="assets/logo.jpg" alt="BMI Calculator" class="logo-img">BMI Calculator</a>
+      <nav><ul class="nav-links">
+        <li><a href="/">Calculator</a></li>
+        <li><a href="about-us.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <h1>BMI Calculator &ndash; Free Online &amp; Instant Body Mass Index Check</h1>
+    <p class="intro">
+      Calculate your Body Mass Index in seconds. Enter your height and weight below to
+      get your BMI value, WHO weight category, and a healthy weight range for your
+      height &mdash; supporting both metric (cm/kg) and imperial (inches/pounds) units,
+      with no sign-up and no download.
+    </p>
+
+    <!-- Tool -->
+    <section class="tool-card" aria-label="BMI Calculator Tool">
+      <div class="unit-toggle">
+        <button id="unit-metric" type="button">Metric (cm / kg)</button>
+        <button id="unit-imperial" type="button">Imperial (in / lb)</button>
+      </div>
+
+      <div class="input-row">
+        <div class="field">
+          <label for="height">Height</label>
+          <div class="input-suffix">
+            <input type="number" id="height" name="height" step="any" inputmode="decimal">
+            <span class="suffix" id="height-suffix">cm</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="weight">Weight</label>
+          <div class="input-suffix">
+            <input type="number" id="weight" name="weight" step="any" inputmode="decimal">
+            <span class="suffix" id="weight-suffix">kg</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn" id="calc-btn" type="button">Calculate BMI</button>
+      <div class="error-msg" id="error-msg" role="alert"></div>
+
+      <!-- Results -->
+      <div class="results" id="results">
+        <div class="result-hero" id="r-hero">
+          <div class="bmi-big" id="r-bmi">0.0</div>
+          <div class="bmi-category" id="r-category">&mdash;</div>
+          <div class="bmi-range" id="r-range">&mdash;</div>
+        </div>
+
+        <div class="result-advice">
+          <div class="advice-title">Health Advice</div>
+          <p id="r-advice-text" style="color:var(--text-light);"></p>
+          <p style="margin-top:10px;color:var(--text-light);">
+            <strong>Healthy weight range for your height:</strong>
+            <span id="r-healthy-range" style="color:var(--text);font-weight:600;">&mdash;</span>
+          </p>
+        </div>
+
+        <!-- BMI Scale -->
+        <div class="bmi-scale">
+          <h3>BMI Scale</h3>
+          <div style="position:relative;">
+            <div class="scale-bar">
+              <div class="scale-seg underweight" title="Underweight &lt; 18.5"></div>
+              <div class="scale-seg normal" title="Normal 18.5–24.9"></div>
+              <div class="scale-seg overweight" title="Overweight 25–29.9"></div>
+              <div class="scale-seg obese" title="Obese ≥ 30"></div>
+            </div>
+            <div class="scale-marker" id="scale-marker" style="margin-left:0%;"></div>
+          </div>
+          <div class="scale-labels">
+            <span>15</span><span>18.5</span><span>25</span><span>30</span><span>40</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Decorative banner -->
+    <img src="assets/banner-health.jpg" alt="Healthy lifestyle - scale, measuring tape and fresh fruits" class="banner-img">
+
+    <!-- Section 1: Introduction -->
+    <section class="section">
+      <h2>What Is the BMI Calculator?</h2>
+      <p>
+        The BMI Calculator is a free online tool that computes your Body Mass Index (BMI)
+        &mdash; a widely used screening measure that uses your height and weight to
+        estimate whether your weight falls within a healthy range. Developed in the 19th
+        century by the Belgian mathematician Adolphe Quetelet and adopted by the World
+        Health Organization as a standard health indicator, BMI provides a quick,
+        accessible way to assess weight status for most adults.
+      </p>
+      <p>
+        This calculator supports both the metric system (centimeters and kilograms) and
+        the imperial system (inches and pounds), making it convenient for users
+        worldwide. After entering your measurements, the tool instantly returns your BMI
+        value, places you in the appropriate WHO category (underweight, normal,
+        overweight, or obese), and shows the healthy weight range for your specific
+        height.
+      </p>
+    </section>
+
+    <!-- Section 2: How to Use -->
+    <section class="section">
+      <h2>How to Use the BMI Calculator</h2>
+      <p>Checking your BMI takes just a few seconds:</p>
+      <ol>
+        <li><strong>Choose your unit system.</strong> Click &ldquo;Metric&rdquo; for centimeters/kilograms or &ldquo;Imperial&rdquo; for inches/pounds.</li>
+        <li><strong>Enter your height.</strong> Type your height in the selected unit (cm or in).</li>
+        <li><strong>Enter your weight.</strong> Type your weight in the selected unit (kg or lb).</li>
+        <li><strong>Click &ldquo;Calculate BMI&rdquo;.</strong> Your BMI value, category, and healthy weight range appear instantly below.</li>
+        <li><strong>Review the scale.</strong> A marker on the BMI scale shows exactly where your result falls in the spectrum from underweight to obese.</li>
+      </ol>
+    </section>
+
+    <!-- Section 3: How It Works -->
+    <section class="section">
+      <h2>How Does the BMI Calculator Work?</h2>
+      <p>The tool applies the standard BMI formula recognized by the World Health Organization. The calculation differs slightly depending on your unit system:</p>
+
+      <h3>Metric Formula</h3>
+      <p style="background:#f1f5f9;padding:12px 16px;border-radius:8px;font-family:monospace;font-size:14px;">
+        BMI = weight (kg) &divide; height (m)&sup2;
+      </p>
+      <p>Since you enter height in centimeters, the tool first divides by 100 to convert to meters, then squares the result and divides your weight by it.</p>
+
+      <h3>Imperial Formula</h3>
+      <p style="background:#f1f5f9;padding:12px 16px;border-radius:8px;font-family:monospace;font-size:14px;">
+        BMI = [weight (lb) &times; 703] &divide; height (in)&sup2;
+      </p>
+      <p>The factor 703 converts the imperial result so it matches the metric BMI scale, allowing the same category thresholds to apply.</p>
+
+      <h3>WHO Classification</h3>
+      <p>Once the BMI value is computed, the tool classifies it according to the WHO standard:</p>
+      <table class="ref-table">
+        <thead><tr><th>Category</th><th>BMI Range</th></tr></thead>
+        <tbody>
+          <tr><td class="cat underweight">Underweight</td><td>Below 18.5</td></tr>
+          <tr><td class="cat normal">Normal weight</td><td>18.5 – 24.9</td></tr>
+          <tr><td class="cat overweight">Overweight</td><td>25.0 – 29.9</td></tr>
+          <tr><td class="cat obese">Obese (Class I)</td><td>30.0 – 34.9</td></tr>
+          <tr><td class="cat obese">Obese (Class II)</td><td>35.0 – 39.9</td></tr>
+          <tr><td class="cat obese">Obese (Class III)</td><td>40.0 and above</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Healthy Weight Range</h3>
+      <p>The tool also calculates the weight range that corresponds to a BMI of 18.5–24.9 for your height, giving you a personal target zone rather than just a single number.</p>
+
+      <h3>No Tracking</h3>
+      <p>Every calculation runs entirely in your browser. Your height and weight are never uploaded or stored.</p>
+    </section>
+
+    <!-- Section 4: Key Features -->
+    <section class="section">
+      <h2>Key Features of Our BMI Calculator</h2>
+      <ul>
+        <li><strong>Dual unit support</strong> &mdash; switch between metric (cm/kg) and imperial (in/lb) with one click.</li>
+        <li><strong>WHO classification</strong> &mdash; instant categorization into underweight, normal, overweight, or obese (including obesity classes I–III).</li>
+        <li><strong>Healthy weight range</strong> &mdash; personalized weight target zone for your exact height.</li>
+        <li><strong>Visual BMI scale</strong> &mdash; a color-coded bar with a marker showing exactly where you fall.</li>
+        <li><strong>Health advice</strong> &mdash; contextual guidance based on your result.</li>
+        <li><strong>100% private</strong> &mdash; all math happens locally; no data is uploaded or stored.</li>
+        <li><strong>Fully responsive</strong> &mdash; works smoothly on phones, tablets, and desktops.</li>
+      </ul>
+    </section>
+
+    <!-- Section 5: Use Cases -->
+    <section class="section">
+      <h2>Common Use Cases</h2>
+      <h3>Personal Health Monitoring</h3>
+      <p>Track your BMI over time as part of your wellness routine. A quick check every few weeks helps you notice trends before they become problems.</p>
+      <h3>Fitness &amp; Weight Management</h3>
+      <p>If you are starting a diet or exercise program, BMI gives you a baseline. Re-check periodically to see how your plan is progressing toward the healthy range.</p>
+      <h3>Healthcare Screening</h3>
+      <p>Doctors, nurses, and dietitians use BMI as a fast initial screening tool during check-ups. It helps identify patients who may benefit from further assessment.</p>
+      <h3>Insurance &amp; Workplace Wellness</h3>
+      <p>Many health insurance plans and corporate wellness programs use BMI as one of several health metrics. This tool lets you check your number before an appointment or enrollment.</p>
+    </section>
+
+    <!-- Section 6: FAQ -->
+    <section class="section">
+      <h2>Frequently Asked Questions</h2>
+
+      <details class="faq-item" open>
+        <summary>What is a BMI Calculator?</summary>
+        <p>A BMI Calculator is a free online tool that calculates your Body Mass Index — a standard measure that uses your height and weight to estimate whether your weight is in a healthy range. It works with both metric (cm, kg) and imperial (inches, pounds) units.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I use the BMI Calculator?</summary>
+        <p>Select your preferred unit system (metric or imperial), enter your height and weight, then click Calculate. The tool instantly shows your BMI value, your WHO weight category, and a healthy weight range for your height.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is a healthy BMI range?</summary>
+        <p>According to the World Health Organization, a BMI between 18.5 and 24.9 is considered normal and healthy. Below 18.5 is underweight, 25.0 to 29.9 is overweight, and 30.0 or above is classified as obese.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this BMI Calculator 100% free?</summary>
+        <p>Yes. Our online BMI Calculator is completely free for unlimited use. There are no hidden fees, no premium limits and no subscription required.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does this tool store my data?</summary>
+        <p>No. All calculations and processing are completed locally on your device. We do not upload, store or share any of your personal input data, ensuring full privacy protection.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are the results from this BMI Calculator accurate?</summary>
+        <p>All results are calculated using the standard WHO BMI formula. The tool is regularly optimized to ensure high accuracy for daily and personal health reference.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use this BMI Calculator on mobile?</summary>
+        <p>Absolutely. The tool is fully responsive and adapts to all mobile, tablet and desktop devices, supporting real-time use anytime and anywhere.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does BMI apply to everyone?</summary>
+        <p>BMI is a general screening tool for adults and may not be accurate for athletes with high muscle mass, pregnant women, or the elderly. It does not measure body fat directly. For a complete health assessment, consult a healthcare professional.</p>
+      </details>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="footer-links">
+        <a href="/">BMI Calculator</a>
+        <a href="about-us.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="copyright">&copy; 2026 BMI Calculator. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+    <p>We use cookies to improve your experience and to display relevant ads. By clicking &ldquo;Accept&rdquo;, you agree to our use of cookies. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    <div class="cookie-btns">
+      <button class="btn-cookie btn-decline" id="cookie-decline" type="button">Decline</button>
+      <button class="btn-cookie btn-accept" id="cookie-accept" type="button">Accept</button>
+    </div>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

@@ -1,1 +1,6 @@
-﻿Sitemap: https://getbmicalc.com/sitemap.xml
+User-agent: *
+Allow: /
+Disallow: /css/
+Disallow: /js/
+
+Sitemap: https://www.getbmicalc.com/sitemap.xml
